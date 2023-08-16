@@ -44,6 +44,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             animator.SetTrigger("moveRight");
-        }
+            }
     }
 }
