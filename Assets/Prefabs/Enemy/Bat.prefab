@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2198876627748788256}
   - component: {fileID: 2198876627748788261}
   - component: {fileID: 2198876627748788260}
-  - component: {fileID: 2198876627748788263}
-  m_Layer: 0
+  - component: {fileID: -2765727680574826575}
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20403528, y: 0.18832517}
   m_EdgeRadius: 0
---- !u!114 &2198876627748788263
+--- !u!114 &-2765727680574826575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,8 +165,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2198876627748788259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c3d6f73aa684262a981b1e8fcde32d, type: 3}
+  m_Script: {fileID: 11500000, guid: e033a9e868781443eb58e0cdea850ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 8
+  maxHealth: 10
+  damage: 5
+  experience: 10
+  moveSpeed: 100

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
 {
-    public static ObjectPooling instance;
+    public static ObjectPooling instance; // thí objectpooling
 
     public List<GameObject> listObjectToPool = new List<GameObject>();      // list prefab for pooling
     public int sizeOfPool;        // size of pool
@@ -39,7 +39,6 @@ public class ObjectPooling : MonoBehaviour
                 int temp = i;
                 if (!poolDict[key][temp].activeInHierarchy)
                 {
-                    Debug.LogError("1");
                     return poolDict[key][temp];
                 }
             }
@@ -55,7 +54,6 @@ public class ObjectPooling : MonoBehaviour
             }
             GameObject newObj = Instantiate(listObjectToPool[_index], transform);
             poolDict[key].Add(newObj);
-            Debug.LogError("2");
             return newObj;
         }
         return null;

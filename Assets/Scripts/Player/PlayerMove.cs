@@ -29,21 +29,31 @@ public class PlayerMove : MonoBehaviour
         rb.velocity = movementVector * Time.fixedDeltaTime;
 
         Animate(movementVector.magnitude > .1f);
-
-
-
     }
 
     private void Animate(bool isMoving)
     {
         animator.SetBool("isMoving", isMoving);
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            animator.SetTrigger("moveLeft");
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+
+        if(rb.velocity.x > 0)
         {
             animator.SetTrigger("moveRight");
-            }
+
+        }
+        else if( rb.velocity.x < 0)
+        {
+            animator.SetTrigger("moveLeft");
+
+        }
+
+
+        //if (Input.GetKeyDown(KeyCode.LeftArrow) )
+        //{
+        //    animator.SetTrigger("moveLeft");
+        //}else
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    animator.SetTrigger("moveRight");
+        //    }
     }
 }
