@@ -7,38 +7,14 @@ public class PlayerShoot : MonoBehaviour
 {
     public float radius = 7f;
     public Vector3 dir;
-    public GameObject target;
-
     public GameObject bullet;
+    public GameObject target;
 
     public float fireRate = 0.5f;
     public float timeToShot = 0.5f;
 
     //Tìm target và bắn
     private void Update()
-    //{
-    //    SetTarget();
-
-    //    timeToShot += Time.deltaTime;
-
-    //    RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 7f);
-
-    //    if (hit.collider != null)
-    //    {
-    //        if (hit.collider.CompareTag("Environment"))
-    //        {
-    //            Debug.Log("Enemy is behind a wall");
-    //        }
-    //        else
-    //        {
-    //            if (timeToShot >= fireRate && target != null)
-    //            {
-    //                Shoot();
-    //                timeToShot = 0;
-    //            }
-    //        }
-    //    }
-    //}
 
     {
         SetTarget();
@@ -75,8 +51,11 @@ public class PlayerShoot : MonoBehaviour
     //Tìm target
     public void SetTarget()
     {
+        float nearestDistance = float.MaxValue;
+
+        List<GameObject> Targets = new();
+
         Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Enemy"));
-       
 
         if(collider2Ds.Length == 0)
         {
@@ -88,11 +67,21 @@ public class PlayerShoot : MonoBehaviour
         {
             if ( c.gameObject.CompareTag("Enemy"))
             {
-                target = c.gameObject;
+                Targets.Add(c.gameObject);
+            }
+        }
+
+
+        foreach (GameObject t in Targets)
+        {
+            float distance = Vector2.Distance(transform.position, t.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                target = t;
             }
         }
     }
-
 
     public void Shoot()
     {

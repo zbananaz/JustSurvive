@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class BaseEnemy : MonoBehaviour
     private Rigidbody2D rb;
     Vector2 dir;
 
-    public int maxHealth = 10;
-    public int damage = 5;
-    public int experience = 10;
-    public int moveSpeed = 100;
+    protected int maxHealth;
+    protected int damage;
+    protected int experience;
+    protected int moveSpeed;
 
     protected int currentHealth;
 
@@ -29,6 +30,7 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void Update()
     {
         dir = (target.transform.position - transform.position).normalized;
+        //agent.SetDestination(target.transform.position);
     }
     
     protected virtual void FixedUpdate()

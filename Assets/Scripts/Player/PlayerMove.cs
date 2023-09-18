@@ -7,9 +7,18 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;
-    Vector3 movementVector;
-    [SerializeField] private float speed = 100f;
     Animator animator;
+
+    [HideInInspector]
+    public float lastHorizontalVector;
+    [HideInInspector]
+    public float lastVertitalVector;
+
+    [HideInInspector]
+    public Vector3 movementVector;
+
+    [SerializeField]
+    private float speed = 200f;
 
     private void Awake()
     {
@@ -23,6 +32,15 @@ public class PlayerMove : MonoBehaviour
     {
         movementVector.x = Input.GetAxisRaw("Horizontal");
         movementVector.y = Input.GetAxisRaw("Vertical");
+
+        if (movementVector.x !=0)
+        {
+            lastHorizontalVector = movementVector.x;
+        }
+        if (movementVector.y != 0)
+        {
+            lastVertitalVector = movementVector.y;
+        }
 
         movementVector *= speed;
 
@@ -38,12 +56,10 @@ public class PlayerMove : MonoBehaviour
         if(rb.velocity.x > 0)
         {
             animator.SetTrigger("moveRight");
-
         }
         else if( rb.velocity.x < 0)
         {
             animator.SetTrigger("moveLeft");
-
         }
 
 

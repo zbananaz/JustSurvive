@@ -10,6 +10,10 @@ public class BatEnemy : BaseEnemy
     }
     protected override void Start()
     {
+        maxHealth = 10;
+        damage = 5;
+        experience = 10;
+        moveSpeed = 100;
         base.Start();
         //Bo sung logic rieng (neu can).
     }

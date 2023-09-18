@@ -6,7 +6,7 @@ using UnityEngine;
 public class WorldScrolling : MonoBehaviour
 {
     [SerializeField] Transform playerTransform;
-    Vector2Int currentTilePosition = new Vector2Int(0, 0);
+    Vector2Int currentTilePosition = new(0, 0);
     [SerializeField] Vector2Int playerTilePosition;
     Vector2Int onTileGridPlayerPosition;
     [SerializeField] float tileSize = 20f;
@@ -17,6 +17,8 @@ public class WorldScrolling : MonoBehaviour
 
     [SerializeField] int fieldOfVisionHeight = 3;
     [SerializeField] int fieldOfVisionWidth = 3;
+
+    AutoRebuildNavMesh autoRebuildNavMesh;
 
     private void Awake()
     {
@@ -59,7 +61,7 @@ public class WorldScrolling : MonoBehaviour
                     );
             }
         }
-
+        //autoRebuildNavMesh.RebuildNavMesh();
     }
 
     private Vector3 CalculateTilePosition(int x, int y)
@@ -73,7 +75,7 @@ public class WorldScrolling : MonoBehaviour
         {
             if(currentValue >= 0)
             {
-                currentValue = currentValue % terrainTileHorizontalCount;
+                currentValue %= terrainTileHorizontalCount;
             }
             else
             {
@@ -85,7 +87,7 @@ public class WorldScrolling : MonoBehaviour
         {
             if (currentValue >= 0)
             {
-                currentValue = currentValue % terrainTileVerticalCount;
+                currentValue %= terrainTileVerticalCount;
             }
             else
             {
